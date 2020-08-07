@@ -9,10 +9,15 @@ using Microsoft.Extensions.Logging;
 
 namespace EventHubFunction
 {
-    public static class Function1
+    public class Function1
     {
+        public Function1()
+        {
+            Console.WriteLine("constructing...");
+        }
+
         [FunctionName("Function1")]
-        public static async Task Run([EventHubTrigger("test", Connection = "EventHubConnectionString")] EventData[] events, ILogger log)
+        public async Task Run([EventHubTrigger("test", Connection = "EventHubConnectionString")] EventData[] events, ILogger log)
         {
             var exceptions = new List<Exception>();
 
